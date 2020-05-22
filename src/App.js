@@ -9,23 +9,46 @@ class App extends Component {
     super(props);
 
     this.state = {
+      cycle: 'Session',
       sessionTime: 25,
       breakTime: 5,
-      clockTime: 0
+      clockCount: 25 * 60
     }
 
-    this.handleDecrease = this.handleDecrease.bind(this);
-    this.handleIncrease = this.handleIncrease.bind(this);
+    this.handleBreakDecrease = this.handleBreakDecrease.bind(this);
+    this.handleBreakIncrease = this.handleBreakIncrease.bind(this);
+    this.handleSessionDecrease = this.handleSessionDecrease.bind(this);
+    this.handleSessionIncrease = this.handleSessionIncrease.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
 
-  handleDecrease() {
-
+  handleSessionDecrease() {
+    if(this.state.sessionTime - 1 >= 0) {
+      this.setState({
+        sessionTime: this.state.sessionTime - 1
+      });
+    }
   }
 
-  handleIncrease() {
-    
+  handleSessionIncrease() {
+    this.setState({
+      sessionTime: this.state.sessionTime + 1
+    });
+  }
+  
+  handleBreakDecrease() {
+    if(this.state.breakTime - 1 >= 0) {
+      this.setState({
+        breakTime: this.state.breakTime - 1
+      });
+    }
+  }
+
+  handleBreakIncrease() {
+    this.setState({
+      breakTime: this.state.breakTime + 1
+    });
   }
 
   handlePlay() {
@@ -40,15 +63,15 @@ class App extends Component {
     const breakProps = {
       title: 'Break',
       time: this.state.breakTime,
-      handleDecrease: this.handleDecrease,
-      handleIncrease: this.handleIncrease
+      handleDecrease: this.handleBreakDecrease,
+      handleIncrease: this.handleBreakIncrease
     }
 
     const sessionProps = {
       title: 'Session',
       time: this.state.sessionTime,
-      handleDecrease: this.handleDecrease,
-      handleIncrease: this.handleIncrease
+      handleDecrease: this.handleSessionDecrease,
+      handleIncrease: this.handleSessionIncrease
     }
 
     return (
@@ -63,7 +86,8 @@ class App extends Component {
         <Clock
           handlePlay={ this.handlePlay }
           handleReset={ this.handleReset }
-          clock={ this.state.clockTime }
+          clock={ this.state.clockCount }
+          cycle={ this.state.cycle }
         />
       </main>
     );

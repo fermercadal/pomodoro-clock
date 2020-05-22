@@ -4,7 +4,7 @@ class TimeInput extends Component {
   render() {
     return (
       <div>
-          <h2>{ this.props.title } time</h2>
+          <h2>Set { this.props.title } time</h2>
           <button onClick={ this.props.handleDecrease }>
             -
           </button>
