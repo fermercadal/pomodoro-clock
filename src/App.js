@@ -12,8 +12,11 @@ class App extends Component {
       cycle: 'Session',
       sessionTime: 25,
       breakTime: 5,
-      clockCount: 25 * 60
+      clockCount: 0,
+      isPlaying: false
     }
+
+    this.loop = undefined;
 
     this.handleBreakDecrease = this.handleBreakDecrease.bind(this);
     this.handleBreakIncrease = this.handleBreakIncrease.bind(this);
@@ -23,40 +26,109 @@ class App extends Component {
     this.handleReset = this.handleReset.bind(this);
   }
 
-  handleSessionDecrease() {
-    if(this.state.sessionTime - 1 >= 0) {
-      this.setState({
-        sessionTime: this.state.sessionTime - 1
-      });
-    }
+  componentDidMount() {
+    const sessionTime = this.state.sessionTime;
+
+    this.setState({
+      clockCount: sessionTime * 60
+    });
   }
 
-  handleSessionIncrease() {
+  componentWillUnmount() {
+    clearInterval(this.loop);
+  }
+
+  handleSessionDecrease = () => {
+    const sessionTime = this.state.sessionTime;
+
+    if(sessionTime - 1 >= 0) {
+      this.setState({
+        sessionTime: sessionTime - 1
+      });
+    }
+
+    this.updateCount((sessionTime - 1))
+  }
+
+  handleSessionIncrease = () => {
+    const sessionTime = this.state.sessionTime;
+
     this.setState({
-      sessionTime: this.state.sessionTime + 1
+      sessionTime: sessionTime + 1
+    });
+
+    this.updateCount((sessionTime + 1))
+  }
+
+  updateCount(value) {
+    this.setState({
+      clockCount: value * 60
     });
   }
   
-  handleBreakDecrease() {
-    if(this.state.breakTime - 1 >= 0) {
+  handleBreakDecrease = () => {
+    const breakTime = this.state.breakTime;
+
+    if(breakTime - 1 >= 0) {
       this.setState({
-        breakTime: this.state.breakTime - 1
+        breakTime: breakTime - 1
       });
     }
   }
 
-  handleBreakIncrease() {
+  handleBreakIncrease = () => {
+    const breakTime = this.state.breakTime;
+
     this.setState({
-      breakTime: this.state.breakTime + 1
+      breakTime: breakTime + 1
     });
   }
 
-  handlePlay() {
+  handlePlay = () => {
+    const isPlaying = this.state.isPlaying;
 
+    if(isPlaying) {
+      clearInterval(this.loop);
+
+      this.setState({
+        isPlaying: false
+      });
+    }
+    else {
+      this.setState({
+        isPlaying: true
+      });
+
+      this.loop = setInterval(() => {
+        const clockCount = this.state.clockCount;
+        const cycle = this.state.cycle;
+        const breakTime = this.state.breakTime;
+        const SessionTime = this.state.SessionTime;
+
+        if(clockCount === 0) {
+          this.setState({
+            cycle: cycle === 'Session' ? 'Break' : 'Session',
+            clockCount: cycle === 'Session' ? (breakTime * 60) : (SessionTime * 60)
+          });
+        } else {
+          this.setState({
+            clockCount: clockCount - 1
+          });
+        }        
+      }, 1000);
+    }
   }
 
-  handleReset() {
-    
+  handleReset = () => {
+    this.setState({
+      cycle: 'Session',
+      sessionTime: 25,
+      breakTime: 5,
+      clockCount: 25 * 60,
+      isPlaying: false
+    });
+
+    clearInterval(this.loop);
   }
 
   render() {
@@ -88,6 +160,7 @@ class App extends Component {
           handleReset={ this.handleReset }
           clock={ this.state.clockCount }
           cycle={ this.state.cycle }
+          isPlaying={ this.state.isPlaying }
         />
       </main>
     );

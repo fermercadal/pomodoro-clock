@@ -12,7 +12,7 @@ class Clock extends Component {
     let seconds = count % 60;
 
     seconds = seconds < 10 ? ('0' + seconds) : seconds;
-    
+
     return `${ minutes }:${ seconds }`;
   }
 
@@ -25,8 +25,11 @@ class Clock extends Component {
         </div>
 
         <div className="buttons">
-          <button onClick={ this.props.handlePlay }>
-            Play/Pause
+          <button 
+            className={ this.props.isPlaying ? 'Pause' : 'Play' }
+            onClick={ this.props.handlePlay }>
+
+            { this.props.isPlaying ? 'Pause' : 'Play' }
           </button>
 
           <button onClick={ this.props.handleReset }>
