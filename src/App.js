@@ -13,6 +13,7 @@ class App extends Component {
       sessionTime: 25,
       breakTime: 5,
       clockCount: 0,
+      started: false,
       isPlaying: false
     }
 
@@ -41,23 +42,55 @@ class App extends Component {
   handleSessionDecrease = () => {
     const sessionTime = this.state.sessionTime;
 
-    if(sessionTime - 1 >= 0) {
+    if(sessionTime - 1 > 0) {
       this.setState({
+        cycle: 'Session',
         sessionTime: sessionTime - 1
       });
-    }
 
-    this.updateCount((sessionTime - 1))
+      this.updateCount((sessionTime - 1));
+    }
   }
 
   handleSessionIncrease = () => {
     const sessionTime = this.state.sessionTime;
 
-    this.setState({
-      sessionTime: sessionTime + 1
-    });
+    if(sessionTime + 1 < 61) {
+      this.setState({
+        cycle: 'Session',
+        sessionTime: sessionTime + 1
+      });
 
-    this.updateCount((sessionTime + 1))
+      this.updateCount((sessionTime + 1))
+    }
+  }
+
+  handleBreakDecrease = () => {
+    const breakTime = this.state.breakTime;
+
+    if(breakTime - 1 > 0) {
+      this.setState({
+        cycle: 'Break',
+        breakTime: breakTime - 1
+      });
+
+      this.updateCount((breakTime - 1))
+    }
+  }
+
+  handleBreakIncrease = () => {
+    const breakTime = this.state.breakTime;
+
+    if(breakTime + 1 < 61) {
+      this.setState({
+        cycle: 'Break',
+        breakTime: breakTime + 1
+      });
+
+      
+      this.updateCount((breakTime + 1))
+    }
+
   }
 
   updateCount(value) {
@@ -65,28 +98,19 @@ class App extends Component {
       clockCount: value * 60
     });
   }
-  
-  handleBreakDecrease = () => {
-    const breakTime = this.state.breakTime;
-
-    if(breakTime - 1 >= 0) {
-      this.setState({
-        breakTime: breakTime - 1
-      });
-    }
-  }
-
-  handleBreakIncrease = () => {
-    const breakTime = this.state.breakTime;
-
-    this.setState({
-      breakTime: breakTime + 1
-    });
-  }
 
   handlePlay = () => {
     const isPlaying = this.state.isPlaying;
+    const sessionTime = this.state.sessionTime;
+    const started = this.state.started;
 
+    if(!started) {
+      this.setState({
+        clockCount: sessionTime * 60,
+        started: true
+      });
+    }
+    
     if(isPlaying) {
       clearInterval(this.loop);
 
@@ -103,19 +127,19 @@ class App extends Component {
         const clockCount = this.state.clockCount;
         const cycle = this.state.cycle;
         const breakTime = this.state.breakTime;
-        const SessionTime = this.state.SessionTime;
+        const sessionTime = this.state.sessionTime;
 
         if(clockCount === 0) {
           this.setState({
             cycle: cycle === 'Session' ? 'Break' : 'Session',
-            clockCount: cycle === 'Session' ? (breakTime * 60) : (SessionTime * 60)
+            clockCount: cycle === 'Session' ? (breakTime * 60) : (sessionTime * 60)
           });
         } else {
           this.setState({
             clockCount: clockCount - 1
           });
         }        
-      }, 1000);
+      }, 100);
     }
   }
 
@@ -125,6 +149,7 @@ class App extends Component {
       sessionTime: 25,
       breakTime: 5,
       clockCount: 25 * 60,
+      started: false,
       isPlaying: false
     });
 

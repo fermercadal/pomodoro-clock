@@ -8,9 +8,10 @@ class Clock extends Component {
   }
 
   convertToTime = (count) => {
-    const minutes = Math.floor(count / 60);
+    let minutes = Math.floor(count / 60);
     let seconds = count % 60;
 
+    minutes = minutes < 10 ? ('0' + minutes) : minutes;
     seconds = seconds < 10 ? ('0' + seconds) : seconds;
 
     return `${ minutes }:${ seconds }`;
@@ -19,20 +20,24 @@ class Clock extends Component {
   render() {
     return (
       <div className="clock">
-        <h2>{ this.props.cycle } Time</h2>
-        <div>
+        <h2 id="timer-label">{ this.props.cycle } Time</h2>
+
+        <div id="time-left">
           { this.convertToTime(this.props.clock) }
         </div>
 
         <div className="buttons">
           <button 
+            id="start_stop"
             className={ this.props.isPlaying ? 'Pause' : 'Play' }
             onClick={ this.props.handlePlay }>
 
             { this.props.isPlaying ? 'Pause' : 'Play' }
           </button>
 
-          <button onClick={ this.props.handleReset }>
+          <button 
+            id="reset"
+            onClick={ this.props.handleReset }>
             Reset
           </button>
         </div>
