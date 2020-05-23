@@ -4,6 +4,8 @@ import './App.css';
 import TimeInput from './Components/TimeInput/TimeInput';
 import Clock from './Components/Clock/Clock';
 
+import Sound from './sound.mp3';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -134,13 +136,22 @@ class App extends Component {
             cycle: cycle === 'Session' ? 'Break' : 'Session',
             clockCount: cycle === 'Session' ? (breakTime * 60) : (sessionTime * 60)
           });
-        } else {
+
+          this.playSound();
+        } 
+        else {
           this.setState({
             clockCount: clockCount - 1
           });
         }        
-      }, 100);
+      }, 1000);
     }
+  }
+
+  playSound() {
+    let audio = document.getElementById('beep');
+    audio.currentTime = 0;
+    audio.play();
   }
 
   handleReset = () => {
@@ -154,6 +165,10 @@ class App extends Component {
     });
 
     clearInterval(this.loop);
+
+    let audio = document.getElementById('beep');
+    audio.pause();
+    audio.currentTime = 0;
   }
 
   render() {
@@ -187,6 +202,10 @@ class App extends Component {
           cycle={ this.state.cycle }
           isPlaying={ this.state.isPlaying }
         />
+
+        <audio id="beep" preload="auto" src={ Sound }>
+
+        </audio>
       </main>
     );
   }
