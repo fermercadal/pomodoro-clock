@@ -3,6 +3,7 @@ import './App.scss';
 
 import TimeInput from './Components/TimeInput/TimeInput';
 import Clock from './Components/Clock/Clock';
+import Tomato from './Components/Tomato/Tomato';
 
 import Sound from './sound.mp3';
 
@@ -191,6 +192,8 @@ class App extends Component {
       <div className={`App ${ this.state.cycle }`}>
         <main id="clock" className="clock">
           <h1>Pomodoro clock</h1>
+
+          <Tomato />
 
           <div class="clock-container">
             <Clock

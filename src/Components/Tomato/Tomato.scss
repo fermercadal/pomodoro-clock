@@ -1,0 +1,112 @@
+@import '../../Variables';
+.tomato-container {
+  background-color: $color-white;
+  margin-bottom: -45px;
+}
+
+.tomato {
+  background: $color-red;
+  background: radial-gradient(circle, $color-red 0%, $color-dark-red 100%);
+  border-radius: 50%;
+  display: flex;
+
+  margin: 0 auto;
+  padding-left: 26px;
+
+  justify-content: center;
+  align-items: center;
+  
+  position: relative;
+  overflow: hidden;
+
+  height: 85px;
+  width: 90px;
+
+  z-index: 3;
+
+  .face-container {
+    position: relative;
+  }
+
+  .eye {
+    background-color: $color-black;
+    border-radius: 50%;
+    display: inline-block;
+    height: 6px;
+    margin: 0 6px;
+    width: 6px;
+  }
+
+  .smile {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    margin: 14px auto 0 auto;
+    width: 20px;
+    height: 6px;
+    overflow: hidden;
+
+    &::before {
+      display: block;
+      background-color: transparent;
+      border: 2px solid $color-black;
+      border-radius: 50%;
+      box-sizing: border-box;
+      content: '';
+      height: 200%;
+      width: 100%;
+    }
+  }
+
+  .glasses {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    left: -25%;
+    position: absolute;
+    transform: translateX(200px);
+    top: 0px;
+    transition: transform .4s ease-in-out;
+    width: 150%;
+
+    .cristal {
+      border: 2px solid $color-black;
+      border-radius: 50%;
+      display: inline-block;
+      height: 26px;
+      width: 26px;
+    }
+  }
+
+  .sunglasses {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    left: -25%;
+    position: absolute;
+    transform: translateX(-200px);
+    top: 0px;
+    transition: transform .4s ease-in-out;
+    width: 150%;
+
+    .cristal {
+      background-color: $color-black;
+      border-radius: 50%;
+      display: inline-block;
+      height: 26px;
+      width: 26px;
+    }
+  }
+}
+
+
+.App.Session {
+  .glasses {
+    transform: translateX(0px);
+  }
+}
+.App.Break {
+  .sunglasses {
+    transform: translateX(0px);
+  }
+}
