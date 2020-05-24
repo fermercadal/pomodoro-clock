@@ -109,6 +109,7 @@ class App extends Component {
     if(!started) {
       this.setState({
         clockCount: sessionTime * 60,
+        cycle: 'Session',
         started: true
       });
     }
