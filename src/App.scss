@@ -30,16 +30,12 @@ body {
 } 
 
 .clock-container {
-  height: calc(100vh - 168px);
+  height: calc(100vh - 161px);
   padding-top: 30px;
   position: relative;
   transition: background-color .2s ease-in-out;
   width: 100%;
 
-  @media only screen and ($small) {
-    height: auto;
-    padding-bottom: 60px;
-  }
 }
 
 .clock h1 {
