@@ -9,36 +9,36 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.App.Session .clock-container {
-  background-color: $color-session;
-}
+.App.Session {
+  .clock h1 {
+    color: $color-session;
+  }
 
-.App.Break .clock-container {
-  background-color: $color-break;
-}
+  .clock-container {
+    background: $gradient-session;
+  }
+} 
+
+.App.Break {
+  .clock h1 {
+    color: $color-break;
+  }
+
+  .clock-container {
+    background: $gradient-break;
+  }
+} 
 
 .clock-container {
-  height: calc(100vh - 190px);
-  margin-top: 45px;
+  height: calc(100vh - 168px);
+  padding-top: 30px;
   position: relative;
   transition: background-color .2s ease-in-out;
   width: 100%;
 
-  @media only screen and (orientation : landscape) {
+  @media only screen and ($small) {
     height: auto;
     padding-bottom: 60px;
-  }
-
-  &::before {
-    content: '';
-    width: 100%;
-    height: 90px;
-    background-color: inherit;
-    border-radius: 50% 50% 0 0;
-    position: absolute;
-    top: -45px;
-    left: 0;
-    z-index: 1;
   }
 }
 
@@ -51,32 +51,47 @@ body {
   margin: 0;
   padding: 60px 30px 15px 30px;
   text-align: center;
+  transition: color .2s ease-in-out;
 }
 
 .running-clock {
   color: $color-white;
   margin: 0 auto;
-  padding: 15px 0;
+  max-width: 380px;
+  padding: 15px 0 0 0;
   text-align: center;
   position: relative;
   width: 80%;
   z-index: 2;
 
+  @media only screen and (min-width: $small) {
+    padding: 15px 0;
+  }
+
   h2 {
     font-size: 1.2rem;
     font-weight: 700;
     margin: 0;
-    padding: 15px 0 0 0;
+    padding: 0;
+
+    @media only screen and ($small) {
+      padding: 15px 0 0 0;
+    }
   }
 
   #time-left {
-    font-size: 6rem;
+    font-size: 4rem;
+
+    @media only screen and (min-width: $small) {
+      font-size: 6rem;
+    }
   }
 }
 
 .set-timber {
   display: flex;
   margin: 0 auto;
+  max-width: 380px;
   width: 80%;
 }
 
@@ -93,7 +108,11 @@ body {
   
   span {
     display: block;
-    font-size: 3.6rem;
+    font-size: 3rem;
+
+    @media only screen and (min-width: $small) {
+      font-size: 3.6rem;
+    }
   }
 }
 

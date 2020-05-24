@@ -8,6 +8,7 @@ class Tomato extends Component {
     return (
       <div className="tomato-container">
         <div className="tomato">
+          <span className="green" />
 
           <span className="face-container">
             <span class="glasses">

@@ -1,13 +1,14 @@
 @import '../../Variables';
 .tomato-container {
   background-color: $color-white;
-  margin-bottom: -45px;
+  margin-bottom: -30px;
 }
 
 .tomato {
   background: $color-red;
-  background: radial-gradient(circle, $color-red 0%, $color-dark-red 100%);
+  background: radial-gradient(circle, $color-red 60%, $color-dark-red 100%);
   border-radius: 50%;
+  box-shadow: -8px 12px 12px -8px rgba(0,0,0,.2);
   display: flex;
 
   margin: 0 auto;
@@ -17,12 +18,25 @@
   align-items: center;
   
   position: relative;
-  overflow: hidden;
+
+  transition: transform .2s ease-in-out;
+  transition-delay: .2s;
 
   height: 85px;
   width: 90px;
 
   z-index: 3;
+
+  .green {
+    background-color: $color-green;
+    content: '';
+    height: 20px;
+    left: 30px;
+    position: absolute;
+    top: -10px;
+    transform: rotate(-30deg);
+    width: 6px;
+  }
 
   .face-container {
     position: relative;
@@ -33,7 +47,7 @@
     border-radius: 50%;
     display: inline-block;
     height: 6px;
-    margin: 0 6px;
+    margin: 12px 6px 0 6px;
     width: 6px;
   }
 
@@ -63,15 +77,18 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     left: -25%;
+    opacity: 0;
     position: absolute;
-    transform: translateX(200px);
+    transform: translateX(100px);
     top: 0px;
-    transition: transform .4s ease-in-out;
+    transition: opacity .2s ease-in-out;
+    transition: transform .2s ease-in-out;
     width: 150%;
 
     .cristal {
       border: 2px solid $color-black;
       border-radius: 50%;
+      box-shadow: -1px -1px 2px 0px rgba(0,0,0,.2);
       display: inline-block;
       height: 26px;
       width: 26px;
@@ -83,15 +100,18 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     left: -25%;
+    opacity: 0;
     position: absolute;
-    transform: translateX(-200px);
+    transform: translateX(-100px);
     top: 0px;
-    transition: transform .4s ease-in-out;
+    transition: opacity .2s ease-in-out;
+    transition: transform .2s ease-in-out;
     width: 150%;
 
     .cristal {
       background-color: $color-black;
       border-radius: 50%;
+      box-shadow: -1px 1px 2px 0px rgba(0,0,0,.2);
       display: inline-block;
       height: 26px;
       width: 26px;
@@ -101,12 +121,22 @@
 
 
 .App.Session {
+  .tomato {
+    transform: rotate(8deg);  
+  }
+
   .glasses {
+    opacity: 1;
     transform: translateX(0px);
   }
 }
 .App.Break {
+  .tomato {
+    transform: rotate(-8deg);  
+  }
+
   .sunglasses {
+    opacity: 1;
     transform: translateX(0px);
   }
 }
