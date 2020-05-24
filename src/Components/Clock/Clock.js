@@ -19,7 +19,7 @@ class Clock extends Component {
 
   render() {
     return (
-      <div className="clock">
+      <div className="running-clock">
         <h2 id="timer-label">{ this.props.cycle } Time</h2>
 
         <div id="time-left">
@@ -29,14 +29,14 @@ class Clock extends Component {
         <div className="buttons">
           <button 
             id="start_stop"
-            className={ this.props.isPlaying ? 'Pause' : 'Play' }
+            className={ this.props.isPlaying ? 'pause' : 'play' }
             onClick={ this.props.handlePlay }>
-
             { this.props.isPlaying ? 'Pause' : 'Play' }
           </button>
 
           <button 
             id="reset"
+            className="reset"
             onClick={ this.props.handleReset }>
             Reset
           </button>

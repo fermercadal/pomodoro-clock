@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Breakpoints */
+$small: 'min-width: 768px';
+$medium: 'min-width: 992px';
+$large: 'min-width: 1200px';
+
+/* Colors */
+$color-session: #344688;
+$color-break: #70AC0E;
+$color-white: #fbfbfb;
+
+.App.Session .clock-container {
+  background-color: $color-session;
+}
+
+.App.Break .clock-container {
+  background-color: $color-break;
+}
+
+.clock-container {
+  height: calc(100vh - 105px);
+  overflow: hidden;
+  transition: background-color .2s ease-in-out;
+  width: 100%;
+
+  @media only screen and (orientation : landscape) {
+    height: auto;
+  }
+}
+
+.clock h1 {
+  background-color: white;
+  font-family: 'Boogaloo', cursive;
+  font-size: 1.6rem;
+  font-weight: normal;
+  margin: 0;
+  padding: 45px 30px 30px 30px;
+  text-align: center;
+}
+
+.running-clock {
+  color: $color-white;
+  margin: 0 auto;
+  padding: 15px 0;
+  text-align: center;
+  width: 80%;
+
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    padding: 15px 0 0 0;
+  }
+
+  #time-left {
+    font-size: 6rem;
+  }
+}
+
+.set-timber {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.time-input {
+  color: $color-white;
+  text-align: center;
+  width: 50%;
+
+  h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 15px 0 0 0;
+  }
+  
+  span {
+    display: block;
+    font-size: 3.6rem;
+  }
+}
+
+.buttons {
+  button {
+    background-color: transparent;
+    background-size: 60% 60%;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    border: 2px solid $color-white;
+    border-radius: 50%;
+    color: transparent;
+    display: inline-block;
+    height: 48px;
+    margin: 5px;
+    overflow: hidden;
+    width: 48px;
+  }
+
+  button.play {
+    background-image: url('./Images/icon-play.svg');
+  }
+
+  button.pause {
+    background-image: url('./Images/icon-pause.svg');
+  }
+
+  button.reset {
+    background-image: url('./Images/icon-reset.svg');
+  }
+
+  button.increase {
+    background-image: url('./Images/icon-increase.svg');
+  }
+
+  button.decrease {
+    background-image: url('./Images/icon-decrease.svg');
+  }
+}

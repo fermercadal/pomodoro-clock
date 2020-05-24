@@ -5,22 +5,26 @@ class TimeInput extends Component {
     const cyclePrefix = this.props.title === 'Session' ? 'session' : 'break';
 
     return (
-      <div>
-          <h2 id={`${ cyclePrefix }-label`}>{ this.props.title } length</h2>
+      <div className="time-input">
+          <h3 id={`${ cyclePrefix }-label`}>{ this.props.title } length</h3>
           
-          <button 
-            id={`${ cyclePrefix }-decrement`}
-            onClick={ this.props.handleDecrease }>
-            -
-          </button>
-
           <span id={`${ cyclePrefix }-length`}>{ this.props.time }</span>
-          
-          <button 
-            id={`${ cyclePrefix }-increment`}
-            onClick={ this.props.handleIncrease }>
-            +
-          </button>
+
+          <div className="buttons">
+            <button 
+              id={`${ cyclePrefix }-decrement`}
+              className="decrease"
+              onClick={ this.props.handleDecrease }>
+              Decrease value
+            </button>
+
+            <button 
+              id={`${ cyclePrefix }-increment`}
+              className="increase"
+              onClick={ this.props.handleIncrease }>
+              Increase value
+            </button>
+          </div>
       </div>
     );
   }

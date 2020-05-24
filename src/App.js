@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 
 import TimeInput from './Components/TimeInput/TimeInput';
 import Clock from './Components/Clock/Clock';
@@ -187,26 +187,29 @@ class App extends Component {
     }
 
     return (
-      <main id="clock" className="clock-container">
-        <h1>Pomodoro clock</h1>
+      <div className={`App ${ this.state.cycle }`}>
+        <main id="clock" className="clock">
+          <h1>Pomodoro clock</h1>
 
-        <div className="set-timber">
-          <TimeInput {...sessionProps} />
-          <TimeInput {...breakProps} />
-        </div>
+          <div class="clock-container">
+            <Clock
+              handlePlay={ this.handlePlay }
+              handleReset={ this.handleReset }
+              clock={ this.state.clockCount }
+              cycle={ this.state.cycle }
+              isPlaying={ this.state.isPlaying }
+            />
 
-        <Clock
-          handlePlay={ this.handlePlay }
-          handleReset={ this.handleReset }
-          clock={ this.state.clockCount }
-          cycle={ this.state.cycle }
-          isPlaying={ this.state.isPlaying }
-        />
+            <audio id="beep" preload="auto" src={ Sound } />
 
-        <audio id="beep" preload="auto" src={ Sound }>
-
-        </audio>
-      </main>
+            <div className="set-timber">
+              <TimeInput {...sessionProps} />
+              <TimeInput {...breakProps} />
+            </div>
+          </div>
+        </main>
+      </div>
+      
     );
   }
 }
