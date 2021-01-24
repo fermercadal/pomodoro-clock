@@ -1,23 +1,22 @@
 {
   "files": {
-    "main.css": "/pomodoro-clock/static/css/main.86816058.chunk.css",
-    "main.js": "/pomodoro-clock/static/js/main.51d27fcc.chunk.js",
-    "main.js.map": "/pomodoro-clock/static/js/main.51d27fcc.chunk.js.map",
-    "runtime-main.js": "/pomodoro-clock/static/js/runtime-main.28f84319.js",
-    "runtime-main.js.map": "/pomodoro-clock/static/js/runtime-main.28f84319.js.map",
-    "static/js/2.34df5515.chunk.js": "/pomodoro-clock/static/js/2.34df5515.chunk.js",
-    "static/js/2.34df5515.chunk.js.map": "/pomodoro-clock/static/js/2.34df5515.chunk.js.map",
+    "main.css": "/pomodoro-clock/static/css/main.fc9f1630.chunk.css",
+    "main.js": "/pomodoro-clock/static/js/main.a2012509.chunk.js",
+    "main.js.map": "/pomodoro-clock/static/js/main.a2012509.chunk.js.map",
+    "runtime-main.js": "/pomodoro-clock/static/js/runtime-main.36ec096e.js",
+    "runtime-main.js.map": "/pomodoro-clock/static/js/runtime-main.36ec096e.js.map",
+    "static/js/2.126b699f.chunk.js": "/pomodoro-clock/static/js/2.126b699f.chunk.js",
+    "static/js/2.126b699f.chunk.js.map": "/pomodoro-clock/static/js/2.126b699f.chunk.js.map",
     "index.html": "/pomodoro-clock/index.html",
-    "precache-manifest.a672fe9ed45793d994376c794a85cd94.js": "/pomodoro-clock/precache-manifest.a672fe9ed45793d994376c794a85cd94.js",
-    "service-worker.js": "/pomodoro-clock/service-worker.js",
-    "static/css/main.86816058.chunk.css.map": "/pomodoro-clock/static/css/main.86816058.chunk.css.map",
-    "static/media/App.scss": "/pomodoro-clock/static/media/icon-reset.99e5292c.svg",
-    "static/media/sound.mp3": "/pomodoro-clock/static/media/sound.a3c6c90d.mp3"
+    "static/css/main.fc9f1630.chunk.css.map": "/pomodoro-clock/static/css/main.fc9f1630.chunk.css.map",
+    "static/js/2.126b699f.chunk.js.LICENSE.txt": "/pomodoro-clock/static/js/2.126b699f.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/pomodoro-clock/static/media/icon-reset.6bd05874.svg",
+    "static/media/sound.4e01a247.mp3": "/pomodoro-clock/static/media/sound.4e01a247.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.28f84319.js",
-    "static/js/2.34df5515.chunk.js",
-    "static/css/main.86816058.chunk.css",
-    "static/js/main.51d27fcc.chunk.js"
+    "static/js/runtime-main.36ec096e.js",
+    "static/js/2.126b699f.chunk.js",
+    "static/css/main.fc9f1630.chunk.css",
+    "static/js/main.a2012509.chunk.js"
   ]
 }
